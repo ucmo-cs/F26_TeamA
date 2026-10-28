@@ -1,0 +1,24 @@
+# Database server tier (MySQL) for the assignment's three-tier architecture.
+# Start: docker compose up -d
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: loan-tracker-mysql
+    ports:
+      # Host 3307 avoids conflict with local /usr/local/mysql on 3306
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: loan_tracker
+      MYSQL_USER: loanuser
+      MYSQL_PASSWORD: loanpass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - loan_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  loan_mysql_data:
