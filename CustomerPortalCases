@@ -1,0 +1,5 @@
+Customer Portal Test Cases
+
+Customer Name:
+Characters only. (Rule: Only a - z or A - Z. No numbers. No special characters)
+Length. (Rule: Extends to only ~(approximately)350 characters. (Wrapping and layout specific because I don't know exact pixels at this moment)
